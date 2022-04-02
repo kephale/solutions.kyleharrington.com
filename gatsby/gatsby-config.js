@@ -1,12 +1,10 @@
 module.exports = {
+  pathPrefix: `/catalogs/default`,
   siteMetadata: {
-    title: 'My solutions',
-    subtitle: 'Exemplary album catalog.',
+    title: 'album catalog',
+    subtitle: 'sharing favourite solutions across tools and domains',
+    catalog_url: 'https://gitlab.com/album-app/catalogs/templates/catalog-gatsby',
     menuLinks:[
-      {
-         name:'home',
-         link:'/'
-      },
       {
          name:'Catalog',
          link:'/catalog'
@@ -15,10 +13,6 @@ module.exports = {
          name:'About',
          link:'/about'
       },
-      {
-         name:'Docs',
-         link:'/docs'
-      }
     ]
   },
   plugins: [{ resolve: `gatsby-theme-album`, options: {} }],
