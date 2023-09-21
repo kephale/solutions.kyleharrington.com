@@ -1,9 +1,9 @@
 module.exports = {
-  pathPrefix: `/catalogs/default`,
+  pathPrefix: `/`,
   siteMetadata: {
-    title: 'album catalog',
+    title: 'solutions.kyleharrington.com',
     subtitle: 'sharing favourite solutions across tools and domains',
-    catalog_url: 'https://gitlab.com/album-app/catalogs/templates/catalog-gatsby',
+    catalog_url: 'https://solutions.kyleharrington.com',
     menuLinks:[
       {
          name:'Catalog',
@@ -15,5 +15,5 @@ module.exports = {
       },
     ]
   },
-  plugins: [{ resolve: `gatsby-theme-album`, options: {} }],
+  plugins: [{ resolve: `gatsby-theme-album`, options: {} }, `gatsby-plugin-theme-ui`],
 }

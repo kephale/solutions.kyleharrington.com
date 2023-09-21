@@ -4,4 +4,16 @@ title: About
 permalink: /about/
 ---
 
-This is a template catalog.
+This is a catalog of album solutions created by [Kyle Harrington](https://kyleharrington.com).
+
+## Getting started
+
+1. Install album
+2. Add this catalog:
+
+```
+album add-catalog
+https://solutions.kyleharrington.com
+```
+
+3. Start installing solutions and play.
