@@ -31,19 +31,21 @@ jobs:
             gatsby/node_modules/
             gatsby/.cache/
             public/
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }} # Creates a unique key for the cache based on the OS and the hash of package-lock.json file
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') )}}
           restore-keys: |
             ${{ runner.os }}-npm-
 
-      - name: Fetch catalogs
-        run: |
-          mkdir -p gatsby/catalogs  # Ensure the catalogs directory exists
-          node gatsby/fetch-catalogs.js  # Execute the script to fetch catalogs
-
-      - name: Install and Build
+      - name: Install dependencies
         run: |
           cd gatsby
           npm install
+
+      - name: Fetch catalogs
+        run: node gatsby/fetch-catalogs.js
+
+      - name: Build site
+        run: |
+          cd gatsby
           ./node_modules/.bin/gatsby build --prefix-paths
 
       - name: Upload artifact
@@ -51,7 +53,6 @@ jobs:
         with:
           path: ./gatsby/public
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
