@@ -1,6 +1,6 @@
 {
   "catalogs": [
       "https://github.com/cellcanvas/album-catalog.git",
-      "https://github.com/kephale/cold-storage"
+      "https://github.com/kephale/cold-storage"      
   ]
 }

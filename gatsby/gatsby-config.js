@@ -1,15 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 
-const catalogDir = path.resolve(__dirname, '../catalogs');
+const catalogDir = path.resolve(__dirname, 'catalogs'); // Should be './gatsby/catalogs'
 const dbFiles = fs.readdirSync(catalogDir).filter(file => file.endsWith('.db'));
 
 module.exports = {
-  pathPrefix: `/`,
+  pathPrefix: `/catalogs/default`,
   siteMetadata: {
-    title: 'Kyle Harringtons meta album catalog',
+    title: 'Meta Catalog',
     subtitle: 'Aggregated solutions from multiple catalogs',
-    catalog_url: 'https://github.com/kephale/solutions.kyleharrington.com',  // Update with your actual site URL
+    catalog_url: 'https://your-site-url',
     menuLinks: [
       {
         name: 'Catalog',
