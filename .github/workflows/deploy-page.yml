@@ -1,10 +1,12 @@
 name: Build and Deploy
+
 on:
   push:
     branches:
       - main  # This workflow will be triggered when changes are pushed to main branch
+  schedule:
+    - cron: '0 0 * * *' # Schedule to run daily at midnight
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -20,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Sets up Node.js version 14
+          node-version: '16'  # Updated Node.js version for better compatibility
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -33,9 +35,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-npm-
 
+      - name: Fetch catalogs
+        run: |
+          mkdir -p gatsby/catalogs  # Ensure the catalogs directory exists
+          node gatsby/fetch-catalogs.js  # Execute the script to fetch catalogs
+
       - name: Install and Build
         run: |
-          rm -f -R public
           cd gatsby
           npm install
           ./node_modules/.bin/gatsby build --prefix-paths
@@ -43,8 +49,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./public
-
+          path: ./gatsby/public
 
   # Deployment job
   deploy:

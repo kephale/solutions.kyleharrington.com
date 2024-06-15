@@ -1,19 +1,37 @@
+const fs = require('fs');
+const path = require('path');
+
+const catalogDir = path.resolve(__dirname, '../catalogs');
+const dbFiles = fs.readdirSync(catalogDir).filter(file => file.endsWith('.db'));
+
 module.exports = {
-  pathPrefix: `/catalogs/default`,
+  pathPrefix: `/`,
   siteMetadata: {
-    title: 'album catalog',
-    subtitle: 'sharing favourite solutions across tools and domains',
-    catalog_url: 'https://gitlab.com/album-app/catalogs/templates/catalog-gatsby',
-    menuLinks:[
+    title: 'Kyle Harringtons meta album catalog',
+    subtitle: 'Aggregated solutions from multiple catalogs',
+    catalog_url: 'https://github.com/kephale/solutions.kyleharrington.com',  // Update with your actual site URL
+    menuLinks: [
       {
-         name:'Catalog',
-         link:'/catalog'
+        name: 'Catalog',
+        link: '/catalog'
       },
       {
-         name:'About',
-         link:'/about'
+        name: 'About',
+        link: '/about'
       },
-    ]
+    ],
   },
-  plugins: [{ resolve: `gatsby-theme-album`, options: {} }],
-}
+  plugins: [
+    ...dbFiles.map(dbFile => ({
+      resolve: `gatsby-source-sqlite`,
+      options: {
+        dbName: path.basename(dbFile, '.db'),
+        dbPath: path.join(catalogDir, dbFile),
+      },
+    })),
+    {
+      resolve: `gatsby-theme-album`,
+      options: {},
+    },
+  ],
+};
