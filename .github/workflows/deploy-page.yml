@@ -3,9 +3,9 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main  # This workflow will be triggered when changes are pushed to main branch
+      - main
   schedule:
-    - cron: '0 0 * * *' # Schedule to run daily at midnight
+    - cron: '0 0 * * *'
 
 permissions:
   contents: read
@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Updated Node.js version for better compatibility
+          node-version: '16'
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -39,8 +39,9 @@ jobs:
         run: |
           cd gatsby
           npm install
+          npm install js-yaml
 
-      - name: Fetch catalogs
+      - name: Fetch catalogs and solutions
         run: node gatsby/fetch-catalogs.js
 
       - name: Build site
