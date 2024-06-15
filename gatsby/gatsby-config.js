@@ -7,9 +7,9 @@ const dbFiles = fs.readdirSync(catalogDir).filter(file => file.endsWith('.db'));
 module.exports = {
   pathPrefix: `/catalogs/default`,
   siteMetadata: {
-    title: 'Meta Catalog',
+    title: 'Kyle Harringtons Meta Catalog',
     subtitle: 'Aggregated solutions from multiple catalogs',
-    catalog_url: 'https://your-site-url',
+    catalog_url: 'https://github.com/kephale/solutions.kyleharrington.com',
     menuLinks: [
       {
         name: 'Catalog',
