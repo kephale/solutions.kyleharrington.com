@@ -5,7 +5,7 @@ const catalogDir = path.resolve(__dirname, 'catalogs'); // Should be './gatsby/c
 const dbFiles = fs.readdirSync(catalogDir).filter(file => file.endsWith('.db'));
 
 module.exports = {
-  pathPrefix: `/catalogs/default`,
+  pathPrefix: `/`,
   siteMetadata: {
     title: 'Kyle Harringtons Meta Catalog',
     subtitle: 'Aggregated solutions from multiple catalogs',
