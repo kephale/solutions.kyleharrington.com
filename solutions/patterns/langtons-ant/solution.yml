@@ -1,0 +1,24 @@
+album_api_version: 0.3.1
+args: []
+changelog: Initial deploy
+cite:
+- text: Langton's Ant by Chris Langton.
+  url: https://en.wikipedia.org/wiki/Langton%27s_ant
+covers:
+- description: Langton's Ant Pattern Generation cover image.
+  source: cover.png
+description: An Album solution that simulates Langton's Ant and displays the resulting
+  pattern using Napari.
+group: patterns
+license: MIT
+name: langtons-ant
+solution_creators:
+- Kyle Harrington
+tags:
+- langtons-ant
+- pattern
+- python
+- napari
+timestamp: '2024-08-08T18:10:18.520918'
+title: Langton's Ant in Napari
+version: 0.0.1
